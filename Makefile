@@ -1,4 +1,4 @@
-# Configuration, override port with usage: make PORT=4200
+# Configuration, override port with usage: make PORT=4100
 PORT ?= 4100
 REPO_NAME ?= pbl-frontend
 LOG_FILE = /tmp/jekyll$(PORT).log
