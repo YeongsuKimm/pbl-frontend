@@ -240,22 +240,19 @@
         </div>
     </div>
 
+    <!-- login success (200) -->
+    <div class="container" id="popupWindow200" style="display: none;">
+        <div class="error">
+            <p><strong>Upload Success</strong></p>
+            <input id="closeButton200" type="submit" value="Go to Home">
+        </div>
+    </div>
 
     <script>
         window.addEventListener('load', function () {
             // Reset the form on page load
             document.getElementById('myForm').reset();
         });
-        // 200 success
-        function success(uploadSuccessful) {
-            const messageElement = document.createElement('p');
-            messageElement.textContent = uploadSuccessful ? 'Upload successful!' : 'Upload failed. Please try again.';
-            messageElement.style.color = uploadSuccessful ? 'green' : 'red';
-            document.body.appendChild(messageElement);
-            // Optionally, you can reset the form or do other actions here
-        }
-
-        // Assuming you have an input element with id="imageInput" where users can select an image file
 
         // Function to handle the image conversion
         function convertImageToBase64(thumbnail) {
@@ -302,7 +299,6 @@
             formData.append('video', vid.files[0]);
             try {
                 const apiUrl = "http://127.0.0.1:8069/api/video/"
-                console.log(genre.value2)
                 var formData = new FormData(form);
                 video = (vid.files[0]).name;
                 convertImageToBase64(thumb)
@@ -336,17 +332,22 @@
                         'Access-Control-Allow-Credentials': 'true'},
                         body: formData
                 })
-                    .catch(error => {
-                        // Handle any errors
-                        console.error('Error uploading video:', error);
-                    });
-                if (!uploadResponse.ok) {
-                    throw new Error('Upload request was not successful');
-                }
-                success(true)
+                .then(response => {
+                    if (response.ok) {
+                        // Call loginSuccess function upon successful upload
+                        uploadSuccess();
+                    } else {
+                        console.error('Video upload failed:', response.statusText);
+                    }
+                })
+                .catch(error => {
+                    // Handle any errors
+                    console.error('Error uploading video:', error);
+                });
+                
             }
             catch {
-                console.log("TRY FAILED")
+                ;
             }
         }
         const form = document.getElementById('myForm');
@@ -354,6 +355,20 @@
             event.preventDefault();
             submitForm();
         });
+
+        // 200 success
+        function uploadSuccess() {
+            // the login form elements
+            var popupwindow200 = document.getElementById("popupWindow200");
+            var closeButton200 = document.getElementById("closeButton200");
+
+            popupWindow200.style.display = "block"; // display the window
+
+            // redirect to dashboard
+            closeButton200.addEventListener("click", function () {
+                window.location.replace("/pbl-frontend/");
+            });
+        }
     </script>
 </body>
 
