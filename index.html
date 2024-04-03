@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
+        /* CSS reset for select element */
+        select {
+            border: 0;
+            padding: 0;
+        }
+
         body {
             background: linear-gradient(45deg, #000000, #2c2c2e);
             height: 100vh;
@@ -57,7 +63,6 @@
             border-radius: 8px;
             background-color: rgba(58, 58, 60, 0.5);
             color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             width: 100%;
             max-width: 300px;
             margin: 0 auto;
@@ -141,7 +146,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
     <div class="error">
-        <p><strong>This is our project's backend page.</strong></p>
+        <p><strong>This is our project with the six of us.</strong></p>
         <p style="text-align: left;">Our AP CSP project introduces a cutting-edge video sharing website. It also includes ML projects.</p>
 
         <!-- Dropdown menu -->
@@ -149,24 +154,25 @@
             <option value="" selected disabled>Select a CPT project to look at</option>
             <option value="./corsica.html">Video Playing CPT Project - Will, Yeongsu</option>
             <option value="./placeholder.html">College Finder CPT Project - Remy and Raynne </option>
-            <option value="./placeholder.html">Recipes - Aidan Kim </option>
+            <option value="./recipehomepage.html">Recipes - Aiden Kim </option>
         </select>
         <select onchange="window.location.href=this.value;">
             <option value="" selected disabled>Select a ML project to look at</option>
             <option value="./tips.html">Tips - Will, Yeongsu, Aaron</option>
-            <option value="./titanic.html">Titanic</option>
-            <option value="./happiness_score.html">Happiness scorer</option>
+            <option value="./titanic.html">Titanic - Shared</option>
+            <option value="./happiness_score.html">Happiness scorer - </option>
+            <option value="./stroke.html">Stroke prediction - </option>
         </select>
     </div>
 
     <!-- square things in the background -->
-    <div class="drops">
+    <!-- <div class="drops">
         <div class="drop drop-1"></div>
         <div class="drop drop-2"></div>
         <div class="drop drop-3"></div>
         <div class="drop drop-4"></div>
         <div class="drop drop-5"></div>
-    </div>
+    </div> -->
 </body>
 
 </html>
