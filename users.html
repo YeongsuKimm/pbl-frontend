@@ -191,7 +191,7 @@
             deleteAccount.addEventListener('click', async function (event) {
                 const uid = document.getElementById('uidAccountField').value;
                 console.log(uid);
-                event.preventDefault();
+                event.preventDefault(); 
                 try {
                     const apiUrl = "http://127.0.0.1:8069/api/users/update"
 
