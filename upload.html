@@ -329,8 +329,9 @@
                     credentials: 'include',
                     headers: {
                         'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
-                        'Access-Control-Allow-Credentials': 'true'},
+                        'Access-Control-Allow-Credentials': 'true',
                         body: formData
+                    }
                 })
                 .then(response => {
                     if (response.ok) {
