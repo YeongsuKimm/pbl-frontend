@@ -136,7 +136,7 @@ fetch(apiUrl, {
   .then(response => response.json())
   .then(data => {
     // Display prediction result
-    document.getElementById("result").innerHTML = "Your Country's Happiness Score: " + (data.score).toFixed(2);
+    document.getElementById("score").innerHTML = "Your Country's Happiness Score: " + (data.score).toFixed(2);
   })
   .catch(error => {
     console.error("Error:", error);
