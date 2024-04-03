@@ -33,7 +33,7 @@
             normalNucleoli: parseInt(document.getElementById("normalNucleoli").value),
             mitoses: parseInt(document.getElementById("mitoses").value)
         };
-        const apiUrl = "http://127.0.0.1:8086/api/cancer/predict"
+        const apiUrl = "http://127.0.0.1:8069/api/cancer/predict"
         fetch(apiUrl, {
             method: "POST",
             headers: {
