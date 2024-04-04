@@ -62,8 +62,6 @@
             <textarea id="recipeInstructions" name="recipeInstructions" rows="4" placeholder="Recipe Instructions" required></textarea><br>
             <textarea id="recipeIngredients" name="recipeIngredients" rows="4" placeholder="Recipe Ingredients" required></textarea><br>
             <textarea id="recommendedSupplies" name="recommendedSupplies" rows="4" placeholder="Recommended Supplies" required></textarea><br>
-            <label for="recipeThumbnail">Recipe Thumbnail:</label><br>
-            <input type="file" id="recipeThumbnail" name="recipeThumbnail" accept="image/*" required><br>
             <button type="submit">Upload Recipe</button>
         </form>
     </div>
@@ -71,47 +69,38 @@
     <script>
         // Function to handle the recipe upload
         async function submitRecipeForm() {
-            const recipeForm = document.getElementById('recipeForm');
             const recipeName = document.getElementById('recipeName').value;
             const recipeInstructions = document.getElementById('recipeInstructions').value;
             const recipeIngredients = document.getElementById('recipeIngredients').value;
             const recommendedSupplies = document.getElementById('recommendedSupplies').value;
-            const recipeThumbnail = document.getElementById('recipeThumbnail').files[0];
+            var form = document.getElementById("recipeForm")
 
-            // Check if all required fields are filled
-            if (!recipeName || !recipeInstructions || !recipeIngredients || !recommendedSupplies || !recipeThumbnail) {
-                console.error('All fields are required.');
-                return;
-            }
-
-            const apiUrl = 'http://127.0.0.1:8069/api/recipe'; // Replace with your API endpoint
-
-            // Prepare form data
-            const formData = new FormData();
-            formData.append('recipeName', recipeName);
-            formData.append('recipeInstructions', recipeInstructions);
-            formData.append('recipeIngredients', recipeIngredients);
-            formData.append('recommendedSupplies', recommendedSupplies);
-            formData.append('recipeThumbnail', recipeThumbnail);
-
-            try {
-                // Send the POST request to the server
-                const response = await fetch(apiUrl, {
+            try{
+                const apiUrl = "http://127.0.0.1:8069/api/recipe/"
+                // Get the form data
+                const formData = new FormData(form);
+                console.log(form)
+                // Send a POST request to your backend server
+                const recipeResponse = await fetch(apiUrl, {
+                    mode: 'cors',
                     method: 'POST',
-                    body: formData
-                });
-
-                if (response.ok) {
-                    console.log('Recipe uploaded successfully.');
-                    // Optionally, reset the form or perform other actions
-                } else {
-                    console.error('Failed to upload recipe.');
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                        'Access-Control-Allow-Credentials': 'true'
+                    },
+                    body: JSON.stringify({ recipeName, recipeInstructions, recipeIngredients, recommendedSupplies}) // convert payload to JSON
+                })
+                if (!recipeResponse.ok) {
+                    throw new Error('Login request was not successful');
                 }
+                const recipeData = await recipeResponse.json();
+                console.log(recipeData);
             } catch (error) {
-                console.error('Error uploading recipe:', error);
+                console.error('Error:', error);
             }
         }
-
         // Event listener for form submission
         const recipeForm = document.getElementById('recipeForm');
         recipeForm.addEventListener('submit', function (event) {
