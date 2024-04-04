@@ -68,37 +68,38 @@
 
     <script>
         // Function to handle the recipe upload
-        function submitRecipeForm() {
-            const recipeName1 = document.getElementById('recipeName').value;
-            const recipeInstructions1 = document.getElementById('recipeInstructions').value;
-            const recipeIngredients1 = document.getElementById('recipeIngredients').value;
-            const recommendedSupplies1 = document.getElementById('recommendedSupplies').value;
-            
-            var formData = {
-                recipeName: recipeName1, 
-                recipeInstructions: recipeInstructions1, 
-                recipeIngredients: recipeIngredients1, 
-                recommendedSupplies: recommendedSupplies1
+        async function submitRecipeForm() {
+            const recipeName = document.getElementById('recipeName').value;
+            const recipeInstructions = document.getElementById('recipeInstructions').value;
+            const recipeIngredients = document.getElementById('recipeIngredients').value;
+            const recommendedSupplies = document.getElementById('recommendedSupplies').value;
+            var form = document.getElementById("recipeForm")
+
+            try{
+                const apiUrl = "http://127.0.0.1:8069/api/recipe/"
+                // Get the form data
+                const formData = new FormData(form);
+                console.log(form)
+                // Send a POST request to your backend server
+                const recipeResponse = await fetch(apiUrl, {
+                    mode: 'cors',
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                        'Access-Control-Allow-Credentials': 'true'
+                    },
+                    body: JSON.stringify({ recipeName, recipeInstructions, recipeIngredients, recommendedSupplies}) // convert payload to JSON
+                })
+                if (!recipeResponse.ok) {
+                    throw new Error('Login request was not successful');
+                }
+                const recipeData = await recipeResponse.json();
+                console.log(recipeData);
+            } catch (error) {
+                console.error('Error:', error);
             }
-            const apiUrl = 'http://127.0.0.1:8069/api/recipe';
-            
-            fetch(apiUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
-                    'Access-Control-Allow-Credentials': 'true'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Display prediction result
-                console.log("success")
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
         }
         // Event listener for form submission
         const recipeForm = document.getElementById('recipeForm');
