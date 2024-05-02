@@ -86,10 +86,16 @@ button:hover {
     </select>
 
     <label for="hypertension">Hypertension (0 for No, 1 for Yes):</label>
-    <input type="number" id="hypertension" name="hypertension" min="0" max="1" required>
+    <select id="hypertension" name="hypertension" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select>
 
     <label for="heartDisease">Heart Disease (0 for No, 1 for Yes):</label>
-    <input type="number" id="heartDisease" name="heartDisease" min="0" max="1" required>
+    <select id="heartDisease" name="heartDisease" required>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+    </select>
 
     <label for="everMarried">Ever Married:</label>
     <select id="everMarried" name="everMarried" required>
@@ -131,8 +137,8 @@ function predictStroke() {
   var formData = {
     age: parseInt(document.getElementById("age").value),
     gender: document.getElementById("gender").value,
-    hypertension: document.getElementById("hypertension").value === "0" ? 0 : 1, // Adjusted to handle "0" input
-    heart_disease: document.getElementById("heartDisease").value === "0" ? 0 : 1, // Adjusted to handle "0" input
+    hypertension: document.getElementById("hypertension").value, // Adjusted to send as string
+    heart_disease: document.getElementById("heartDisease").value, // Adjusted to send as string
     ever_married: document.getElementById("everMarried").value, // Adjusted key
     work_type: document.getElementById("workType").value,
     Residence_type: document.getElementById("residenceType").value, // Adjusted key
