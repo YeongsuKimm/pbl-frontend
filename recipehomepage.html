@@ -104,7 +104,7 @@
             <input type="text" placeholder="Search for recipes...">
             <button type="submit">Search Recipe</button>
         </form>
-        <a href="./upload"><button>Upload Your Own Recipe</button></a>
+        <a href="./recipeupload.html"><button>Upload Your Own Recipe</button></a>
         <ol id="results"></ol>
     </div>
     <button id="backToTop" onclick="scrollToTop()">Back to Top</button>
@@ -157,7 +157,7 @@
             // Save the recipe data to localStorage
             localStorage.setItem('fullRecipe', JSON.stringify(recipe));
             // Redirect to the full recipe page
-            window.location.href = './fullRecipe';
+            window.location.href = './fullrecipe.html';
         }
 
         window.addEventListener('scroll', () => {
