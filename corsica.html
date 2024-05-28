@@ -174,7 +174,7 @@
                         videoItem.classList.add('video-item');
 
                         const videoLink = document.createElement('a');
-                        videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                        videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                         const videoImage = document.createElement('img');
                         videoImage.classList.add('video');
@@ -221,7 +221,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -269,7 +269,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -310,7 +310,7 @@
                 console.log("should recommend or no uid")
                 try {
                     console.log("recommend")
-                    const apiUrl = "http://127.0.0.1:8069/api/video/recommend/" + String(localStorage.getItem("uid"));
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/recommend/" + String(localStorage.getItem("uid"));
                     fetch(apiUrl)
                         .then(response => {
                             if (!response.ok) {
@@ -326,7 +326,7 @@
                                 videoItem.classList.add('video-item');
                 
                                 const videoLink = document.createElement('a');
-                                videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"];
+                                videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"];
                 
                                 const videoImage = document.createElement('img');
                                 videoImage.classList.add('video');
@@ -367,7 +367,7 @@
         // Load videos when the page is loaded
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 renderVideos(videos);
@@ -380,7 +380,7 @@
         document.getElementById('shuffleButton').addEventListener('click', async (event) => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video";
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video";
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 clearVideos();
@@ -394,7 +394,7 @@
             if (event.key === 'Enter') {
                 event.preventDefault(); // Prevent default form submission behavior
                 try {
-                    const apiUrl = "http://127.0.0.1:8069/api/video"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                     const response = await fetch(apiUrl);
                     const videos = await response.json();
                     const query = document.getElementById("query").value;
@@ -409,7 +409,7 @@
         gaming.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "gaming"
@@ -423,7 +423,7 @@
         music.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "music"
@@ -437,7 +437,7 @@
         sports.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "sports"
@@ -451,7 +451,7 @@
         edu.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "educational"
