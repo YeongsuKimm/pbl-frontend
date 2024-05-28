@@ -447,8 +447,15 @@
             description.innerText = data["description"];
             creator.innerText = data["userID"];
             views.innerText = data["views"] + " views";
-            console.log(data["video"])
-            source.src = data["video"] + "/videos";
+            const videoUrl = new URL(data["video"]);
+            const filename = videoUrl.pathname.split('/').pop(); // Extracts "test.mp4"
+
+            // Construct the new video URL
+            const newVideoUrl = `${videoUrl.origin}/videos/${filename}`;
+            console.log(newVideoUrl);
+
+            // Change the video's URL
+            source.src = newVideoUrl;
             likes.innerText += data['likes'];
             dislikes.innerText += data['dislikes']
             genre.innerText += data["genre"]
