@@ -83,7 +83,7 @@
             const thumbnailUrl = document.getElementById('thumbnailUrl').value;
 
             const recipeData = {
-                userid: localStorage.getItem('userId'), // Assuming the userId is stored in localStorage
+                userid: localStorage.getItem('uid'), // Assuming the userId is stored in localStorage
                 recipeName: recipeName,
                 recipeInstructions: recipeInstructions,
                 recipeIngredients: recipeIngredients,
@@ -97,7 +97,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/',
                         'Access-Control-Allow-Credentials': 'true'
                     },
                     body: JSON.stringify(recipeData)
