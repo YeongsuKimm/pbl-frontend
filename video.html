@@ -470,8 +470,6 @@
         }
         
         function uploadComment() {
-            const params = new URLSearchParams(window.location.search);
-            const videoID = params.get("videoID");
             const comment = document.getElementById('new-comment').value;
             if (comment.trim() === '') {
                 alert('Comment cannot be empty.');
