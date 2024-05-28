@@ -383,17 +383,17 @@
         }
 
         // Function to send a GET request to the URL
-        function fetchVideo(url, objectId) {
+        async function fetchVideo(url, objectId) {
             const params = new URLSearchParams(window.location.search);
             const apiUrl = new URL(url) + params.get("videoID");
             console.log(apiUrl)
             var index = -1;
-            return fetch(apiUrl, {
+            const response = await fetch(apiUrl, {
                 mode: "cors",
                 credentials: 'include',
                 headers: {
                     'Access-Control-Allow-Credentials': 'true',
-                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/'
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io'
                 }
             })
                 .then(response => {
@@ -418,6 +418,7 @@
                     // Handle other errors
                     console.error('Error fetching data:', error);
                 });
+            console.log(await response.json())
         }
 
         var flag = 0;
@@ -677,3 +678,4 @@
 </body>
 
 </html>
+
