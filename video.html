@@ -345,6 +345,8 @@
 
     <script>
         function fetchComments(){
+            const params = new URLSearchParams(window.location.search);
+            const videoID = params.get("videoID");
             const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/comment/" + videoID
             //document.getElementById("comments").innerHTML = url
             fetch(url, {
