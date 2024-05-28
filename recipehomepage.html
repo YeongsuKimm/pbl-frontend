@@ -113,7 +113,7 @@
         recipeForm.addEventListener('submit', async (event) => {
             event.preventDefault();
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/recipe";
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/recipe";
                 const response = await fetch(apiUrl);
                 const recipes = await response.json();
                 // Clear existing results

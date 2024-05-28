@@ -149,7 +149,7 @@ tags:
             };
         
             // Send a POST request to the backend API
-            fetch('http://127.0.0.1:8069/api/comments/', {
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -172,7 +172,7 @@ tags:
         }
         
         function getComments() {
-            fetch('http://127.0.0.1:8069/api/comments/')
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/')
             .then(response => {
                 if (response.ok) {
                     return response.json();
@@ -209,7 +209,7 @@ tags:
         }
                 // Function to display comments
         function displayComments() {
-            fetch('http://127.0.0.1:8069/api/comments/')
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/')
             .then(response => {
                 if (response.ok) {
                     return response.json();

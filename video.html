@@ -315,12 +315,12 @@
                         const videoID = urlParams.get('videoID');
                         const uid = localStorage.getItem("uid")
                         console.log('videoID:', videoID);
-                        const url = "http://127.0.0.1:8069/api/users/playlist"
+                        const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist"
                         fetch(url, {
                             method: 'PUT',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                                'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/pbl-frontend/',
                                 'Access-Control-Allow-Credentials': 'true'
                             },
                             body: JSON.stringify({ uid: uid, name: playlistSelected, vidID:videoID }) //JSON data
@@ -344,7 +344,7 @@
 
     <script>
         function fetchComments(){
-            const url = "http://127.0.0.1:8069/api/comment/" + videoID
+            const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/comment/" + videoID
             //document.getElementById("comments").innerHTML = url
             fetch(url, {
                 type:"GET", 
@@ -448,7 +448,7 @@
 
             video.load();
             try {
-                const url = "http://127.0.0.1:8069/api/video/"
+                const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/"
                 const uid = localStorage.getItem('uid');
                 console.log("uid: ", uid)
                 fetch(url, {
@@ -470,14 +470,14 @@
                 return;
             }
             const uid = localStorage.getItem('uid');
-            const apiUrl = "http://127.0.0.1:8069/api/comment/";
+            const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/comment/";
         
             fetch(apiUrl, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/pbl-frontend/',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 body: JSON.stringify({ comment, videoID, uid })
@@ -512,7 +512,7 @@
         //    "video": "vid"
         //})
         // Call fetchData function with the API URL
-        const apiUrl = 'http://127.0.0.1:8069/api/video/';
+        const apiUrl = 'https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/';
         const objectId = '1'; // Replace 'your_object_id_here' with the actual object ID
         fetchVideo(apiUrl, objectId);
 
@@ -525,7 +525,7 @@
                 videoItem.classList.add('grid-item');                   
                 videoItem.classList.add('video-item');
                 const videoLink = document.createElement('a');
-                videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                videoLink.href = "https://yeongsukimm.github.io/pbl-frontend//pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                 const videoImage = document.createElement('img');
                 videoImage.classList.add('video');
@@ -564,7 +564,7 @@
         like.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const url = "http://127.0.0.1:8069/api/video/"
+                const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/"
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
@@ -582,7 +582,7 @@
         dislike.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const url = "http://127.0.0.1:8069/api/video/"
+                const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/"
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
@@ -599,7 +599,7 @@
         document.addEventListener('DOMContentLoaded', async () => {
             const uid = localStorage.getItem('uid');
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video";
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video";
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 console.log(videos)
@@ -626,7 +626,7 @@
             } 
 
       
-            const url = "http://127.0.0.1:8069/api/users/playlist";
+            const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist";
             fetch(url, {
                 method: "GET", 
                 mode: "cors",

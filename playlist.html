@@ -149,7 +149,7 @@
             }
         }
         async function renderVideosWithID(videosID) {
-            const apiUrl = "http://127.0.0.1:8069/api/video";
+            const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video";
             const response = await fetch(apiUrl);
             const videos = await response.json();
             var vids = []
@@ -176,7 +176,7 @@
                         videoItem.classList.add('video-item');
 
                         const videoLink = document.createElement('a');
-                        videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                        videoLink.href = "https://yeongsukimm.github.io/pbl-frontend//pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                         const videoImage = document.createElement('img');
                         videoImage.classList.add('video');
@@ -223,7 +223,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend//pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -272,7 +272,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend//pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -317,7 +317,7 @@
             if (event.key === 'Enter') {
                 event.preventDefault(); // Prevent default form submission behavior
                 try {
-                    const apiUrl = "http://127.0.0.1:8069/api/video"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                     const response = await fetch(apiUrl);
                     const videos = await response.json();
                     const query = document.getElementById("query").value;
@@ -332,7 +332,7 @@
         liked.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 clearVideos()
@@ -344,7 +344,7 @@
         });
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                const apiUrl = "http://127.0.0.1:8069/api/users/playlist";
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist";
                 const response = await fetch(apiUrl);
                 const users = await response.json();
                 const uid = localStorage.getItem("uid");
@@ -373,7 +373,7 @@
         async function handlePlaylistClick(playlistName) {
             // Replace this with the actual logic you want to perform when a playlist link is clicked
             console.log(`Playlist clicked: ${playlistName}`);
-            const apiUrl = "http://127.0.0.1:8069/api/users/playlist";
+            const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist";
             const response = await fetch(apiUrl);
             const users = await response.json();
             var videos = [];

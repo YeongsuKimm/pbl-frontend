@@ -254,7 +254,7 @@
                 console.log("LOG IN PRIOR TO UPLOAD")
                 return "SIGN IN"
             }
-            const apiUrl = "http://127.0.0.1:8069/api/users/playlist"
+            const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist"
             var formData = new FormData(form);
             fetch(apiUrl, {
                 mode: 'cors',
@@ -262,7 +262,7 @@
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/pbl-frontend/',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 body: JSON.stringify({ name:name, uid: uid }) // convert payload to JSON

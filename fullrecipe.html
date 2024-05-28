@@ -84,11 +84,11 @@
             likeButton.disabled = true;
 
             const recipe = JSON.parse(localStorage.getItem('fullRecipe'));
-            fetch("http://127.0.0.1:8069/api/recipe/", {
+            fetch("https://pbl-backend.stu.nighthawkcodingsociety.com/api/recipe/", {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/pbl-frontend/',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 body: JSON.stringify({ "recipe_id": recipe.id })
