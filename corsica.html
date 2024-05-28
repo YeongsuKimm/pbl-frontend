@@ -174,7 +174,7 @@
                         videoItem.classList.add('video-item');
 
                         const videoLink = document.createElement('a');
-                        videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                        videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                         const videoImage = document.createElement('img');
                         videoImage.classList.add('video');
@@ -221,7 +221,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -269,7 +269,7 @@
                             videoItem.classList.add('video-item');
 
                             const videoLink = document.createElement('a');
-                            videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
+                            videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"]; // Assuming video object has a 'video' property for the URL
 
                             const videoImage = document.createElement('img');
                             videoImage.classList.add('video');
@@ -310,16 +310,8 @@
                 console.log("should recommend or no uid")
                 try {
                     console.log("recommend")
-                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/recommend/" + String(localStorage.getItem("uid"));
-                    fetch(apiUrl, {
-                        method: 'GET', // Specify the HTTP method if needed
-                        credentials: 'include', // Include credentials
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                            'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                        }
-                    })
+                    const apiUrl = "http://127.0.0.1:8069/api/video/recommend/" + String(localStorage.getItem("uid"));
+                    fetch(apiUrl)
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
@@ -334,7 +326,7 @@
                                 videoItem.classList.add('video-item');
                 
                                 const videoLink = document.createElement('a');
-                                videoLink.href = "https://yeongsukimm.github.io/pbl-frontend/video" + "?videoID=" + video["videoID"];
+                                videoLink.href = "http://127.0.0.1:4100/pbl-frontend/video" + "?videoID=" + video["videoID"];
                 
                                 const videoImage = document.createElement('img');
                                 videoImage.classList.add('video');
@@ -375,7 +367,7 @@
         // Load videos when the page is loaded
         document.addEventListener('DOMContentLoaded', async () => {
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
+                const apiUrl = "http://127.0.0.1:8069/api/video"
                 const response = await fetch(apiUrl);
                 const videos = await response.json();
                 renderVideos(videos);
@@ -388,16 +380,8 @@
         document.getElementById('shuffleButton').addEventListener('click', async (event) => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video";
-                const response = await fetch(apiUrl, {
-                    method: 'GET', // Specify the HTTP method if needed
-                    credentials: 'include', // Include credentials
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                    }
-                });
+                const apiUrl = "http://127.0.0.1:8069/api/video";
+                const response = await fetch(apiUrl);
                 const videos = await response.json();
                 clearVideos();
                 renderVideos(videos, "", "", true); // Pass true to shuffle the videos
@@ -410,16 +394,8 @@
             if (event.key === 'Enter') {
                 event.preventDefault(); // Prevent default form submission behavior
                 try {
-                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                    const response = await fetch(apiUrl, {
-                        method: 'GET', // Specify the HTTP method if needed
-                        credentials: 'include', // Include credentials
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                            'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                        }
-                    });
+                    const apiUrl = "http://127.0.0.1:8069/api/video"
+                    const response = await fetch(apiUrl);
                     const videos = await response.json();
                     const query = document.getElementById("query").value;
                     clearVideos()
@@ -433,16 +409,8 @@
         gaming.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl, {
-                    method: 'GET', // Specify the HTTP method if needed
-                    credentials: 'include', // Include credentials
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                    }
-                });
+                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "gaming"
                 clearVideos()
@@ -455,16 +423,8 @@
         music.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl, {
-                    method: 'GET', // Specify the HTTP method if needed
-                    credentials: 'include', // Include credentials
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                    }
-                });
+                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "music"
                 clearVideos()
@@ -477,16 +437,8 @@
         sports.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl, {
-                    method: 'GET', // Specify the HTTP method if needed
-                    credentials: 'include', // Include credentials
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                    }
-                });
+                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "sports"
                 clearVideos()
@@ -499,16 +451,8 @@
         edu.addEventListener('click', async () => {
             event.preventDefault(); // Prevent default form submission behavior
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl, {
-                    method: 'GET', // Specify the HTTP method if needed
-                    credentials: 'include', // Include credentials
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
-                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
-                    }
-                });
+                const apiUrl = "http://127.0.0.1:8069/api/video"
+                const response = await fetch(apiUrl);
                 const videos = await response.json();
                 const genre = "educational"
                 clearVideos()
