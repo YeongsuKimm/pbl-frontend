@@ -318,6 +318,7 @@
                         const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/playlist"
                         fetch(url, {
                             method: 'PUT',
+                            credentials: 'include',
                             headers: {
                                 'Content-Type': 'application/json',
                                 'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/pbl-frontend/',
@@ -457,6 +458,7 @@
                 console.log("uid: ", uid)
                 fetch(url, {
                     method: 'PUT',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -572,6 +574,7 @@
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -590,6 +593,7 @@
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
