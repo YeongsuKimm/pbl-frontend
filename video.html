@@ -321,7 +321,7 @@
                             credentials: 'include',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
+                                'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/',
                                 'Access-Control-Allow-Credentials': 'true'
                             },
                             body: JSON.stringify({ uid: uid, name: playlistSelected, vidID:videoID }) //JSON data
@@ -345,6 +345,8 @@
 
     <script>
         function fetchComments(){
+            const params = new URLSearchParams(window.location.search);
+            const videoID = params.get("videoID");
             const url = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/comment/" + videoID
             //document.getElementById("comments").innerHTML = url
             fetch(url, {
@@ -383,17 +385,17 @@
         }
 
         // Function to send a GET request to the URL
-        async function fetchVideo(url, objectId) {
+        function fetchVideo(url, objectId) {
             const params = new URLSearchParams(window.location.search);
             const apiUrl = new URL(url) + params.get("videoID");
             console.log(apiUrl)
             var index = -1;
-            const response = await fetch(apiUrl, {
+            return fetch(apiUrl, {
                 mode: "cors",
                 credentials: 'include',
                 headers: {
                     'Access-Control-Allow-Credentials': 'true',
-                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io'
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/'
                 }
             })
                 .then(response => {
@@ -418,7 +420,6 @@
                     // Handle other errors
                     console.error('Error fetching data:', error);
                 });
-            console.log(await response.json())
         }
 
         var flag = 0;
@@ -482,7 +483,7 @@
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
+                    'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/',
                     'Access-Control-Allow-Credentials': 'true'
                 },
                 body: JSON.stringify({ comment, videoID, uid })
@@ -678,4 +679,3 @@
 </body>
 
 </html>
-
