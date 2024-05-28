@@ -350,7 +350,6 @@
             fetch(url, {
                 type:"GET", 
                 mode: "cors",
-                credentials: 'include'
             })
             .then(response => {
                 if (response.status === 403) {
@@ -458,7 +457,6 @@
                 console.log("uid: ", uid)
                 fetch(url, {
                     method: 'PUT',
-                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -574,7 +572,6 @@
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
-                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -593,7 +590,6 @@
                 const uid = localStorage.getItem('uid');
                 fetch(url, {
                     method: 'PUT',
-                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -638,7 +634,6 @@
             fetch(url, {
                 method: "GET", 
                 mode: "cors",
-                credentials: 'include'
             })
             .then(response => {
                 if (response.status === 403) {
