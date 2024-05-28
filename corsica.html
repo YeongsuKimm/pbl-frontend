@@ -311,7 +311,15 @@
                 try {
                     console.log("recommend")
                     const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video/recommend/" + String(localStorage.getItem("uid"));
-                    fetch(apiUrl)
+                    fetch(apiUrl, {
+                        method: 'GET', // Specify the HTTP method if needed
+                        credentials: 'include', // Include credentials
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                            'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                        }
+                    })
                         .then(response => {
                             if (!response.ok) {
                                 throw new Error('Network response was not ok');
@@ -381,7 +389,15 @@
             event.preventDefault(); // Prevent default form submission behavior
             try {
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video";
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET', // Specify the HTTP method if needed
+                    credentials: 'include', // Include credentials
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                    }
+                });
                 const videos = await response.json();
                 clearVideos();
                 renderVideos(videos, "", "", true); // Pass true to shuffle the videos
@@ -395,7 +411,15 @@
                 event.preventDefault(); // Prevent default form submission behavior
                 try {
                     const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                    const response = await fetch(apiUrl);
+                    const response = await fetch(apiUrl, {
+                        method: 'GET', // Specify the HTTP method if needed
+                        credentials: 'include', // Include credentials
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                            'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                        }
+                    });
                     const videos = await response.json();
                     const query = document.getElementById("query").value;
                     clearVideos()
@@ -410,7 +434,15 @@
             event.preventDefault(); // Prevent default form submission behavior
             try {
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET', // Specify the HTTP method if needed
+                    credentials: 'include', // Include credentials
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                    }
+                });
                 const videos = await response.json();
                 const genre = "gaming"
                 clearVideos()
@@ -424,7 +456,15 @@
             event.preventDefault(); // Prevent default form submission behavior
             try {
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET', // Specify the HTTP method if needed
+                    credentials: 'include', // Include credentials
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                    }
+                });
                 const videos = await response.json();
                 const genre = "music"
                 clearVideos()
@@ -438,7 +478,15 @@
             event.preventDefault(); // Prevent default form submission behavior
             try {
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET', // Specify the HTTP method if needed
+                    credentials: 'include', // Include credentials
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                    }
+                });
                 const videos = await response.json();
                 const genre = "sports"
                 clearVideos()
@@ -452,7 +500,15 @@
             event.preventDefault(); // Prevent default form submission behavior
             try {
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/video"
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET', // Specify the HTTP method if needed
+                    credentials: 'include', // Include credentials
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io', // Add the CORS header
+                        'Access-Control-Allow-Credentials': 'true' // Include credentials in CORS response
+                    }
+                });
                 const videos = await response.json();
                 const genre = "educational"
                 clearVideos()
