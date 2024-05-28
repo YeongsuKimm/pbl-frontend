@@ -447,7 +447,8 @@
             description.innerText = data["description"];
             creator.innerText = data["userID"];
             views.innerText = data["views"] + " views";
-            source.src = data["video"];
+            console.log(data["video"])
+            source.src = data["video"] + "/videos";
             likes.innerText += data['likes'];
             dislikes.innerText += data['dislikes']
             genre.innerText += data["genre"]
