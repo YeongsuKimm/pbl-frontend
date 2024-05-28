@@ -260,8 +260,8 @@
             deleteAccount.addEventListener('click', async function (event) {
                 event.preventDefault();
                 try {
-                    // const apiUrl = "http://127.0.0.1:8069/api/users/update"
-                    const apiUrl = "http://127.0.0.1:8069/api/users/update";
+                    // const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update";
 
                     // post request to backend
                     const deleteAccount = await fetch(apiUrl, {
@@ -271,7 +271,7 @@
                         
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
                             'Access-Control-Allow-Credentials': 'true'
                         },
                         body: JSON.stringify({ uid }) //JSON data
@@ -304,8 +304,8 @@
             changeEmail.addEventListener('click', async function (event) {
                 event.preventDefault();
                 try {
-                    // const apiUrl = "http://127.0.0.1:8069/api/users/update"
-                    const apiUrl = "http://127.0.0.1:8069/api/users/update";
+                    // const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update";
                     const email = document.getElementById('emailField').value; // the new email to change 
 
                     // post request to backend
@@ -315,7 +315,7 @@
                         credentials: 'include',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
                             'Access-Control-Allow-Credentials': 'true'
                         },
                         body: JSON.stringify({ uid, email }) //JSON data

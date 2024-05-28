@@ -12,6 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
         }
 
         .container {
@@ -19,6 +20,8 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
         }
 
         input[type="text"],
@@ -30,10 +33,7 @@
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
-        }
-
-        input[type="file"] {
-            margin-top: 10px;
+            font-size: 16px;
         }
 
         button {
@@ -45,70 +45,81 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            width: 100%;
         }
 
         button:hover {
             background-color: #45a049;
         }
+
+        .message {
+            color: white;
+            margin-top: 10px;
+        }
     </style>
 </head>
-
 <body>
-
     <div class="container">
         <h2>Upload Your Recipe</h2>
-        <form method="POST" id="recipeForm" enctype="multipart/form-data">
+        <form id="recipeForm">
             <input type="text" id="recipeName" name="recipeName" placeholder="Recipe Name" required><br>
             <textarea id="recipeInstructions" name="recipeInstructions" rows="4" placeholder="Recipe Instructions" required></textarea><br>
             <textarea id="recipeIngredients" name="recipeIngredients" rows="4" placeholder="Recipe Ingredients" required></textarea><br>
             <textarea id="recommendedSupplies" name="recommendedSupplies" rows="4" placeholder="Recommended Supplies" required></textarea><br>
+            <input type="text" id="thumbnailUrl" name="thumbnailUrl" placeholder="Image URL" required><br>
             <button type="submit">Upload Recipe</button>
         </form>
+        <div class="message" id="message"></div>
     </div>
 
     <script>
-        // Function to handle the recipe upload
-        async function submitRecipeForm() {
+        async function submitRecipeForm(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
             const recipeName = document.getElementById('recipeName').value;
             const recipeInstructions = document.getElementById('recipeInstructions').value;
             const recipeIngredients = document.getElementById('recipeIngredients').value;
             const recommendedSupplies = document.getElementById('recommendedSupplies').value;
-            var form = document.getElementById("recipeForm")
+            const thumbnailUrl = document.getElementById('thumbnailUrl').value;
 
-            try{
-                const apiUrl = "http://127.0.0.1:8069/api/recipe/"
-                // Get the form data
-                const formData = new FormData(form);
-                console.log(form)
-                // Send a POST request to your backend server
-                const recipeResponse = await fetch(apiUrl, {
-                    mode: 'cors',
+            const recipeData = {
+                userid: localStorage.getItem('uid'), // Assuming the userId is stored in localStorage
+                recipeName: recipeName,
+                recipeInstructions: recipeInstructions,
+                recipeIngredients: recipeIngredients,
+                recommendedSupplies: recommendedSupplies,
+                recipeThumbnail: thumbnailUrl
+            };
+
+            try {
+                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/recipe/";
+                const response = await fetch(apiUrl, {
                     method: 'POST',
-                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/',
                         'Access-Control-Allow-Credentials': 'true'
                     },
-                    body: JSON.stringify({ recipeName, recipeInstructions, recipeIngredients, recommendedSupplies}) // convert payload to JSON
-                })
-                if (!recipeResponse.ok) {
-                    throw new Error('Login request was not successful');
+                    body: JSON.stringify(recipeData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Recipe upload request was not successful');
                 }
-                const recipeData = await recipeResponse.json();
-                console.log(recipeData);
+
+                const responseData = await response.json();
+                document.getElementById('message').innerText = 'Recipe uploaded successfully.';
+                // Redirect to another page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = './recipehomepage.html';
+                }, 2000);
             } catch (error) {
                 console.error('Error:', error);
+                document.getElementById('message').innerText = 'Failed to upload recipe. Please try again.';
             }
         }
-        // Event listener for form submission
-        const recipeForm = document.getElementById('recipeForm');
-        recipeForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent the default form submission
-            submitRecipeForm(); // Call the function to handle recipe upload
-        });
+
+        document.getElementById('recipeForm').addEventListener('submit', submitRecipeForm);
     </script>
-
 </body>
-
 </html>

@@ -121,14 +121,14 @@ function predictHappiness() {
     };
 
 //Set API url
-const apiUrl = "http://127.0.0.1:8069/api/happiness/predict"
+const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/happiness/predict"
 
 //Send data to backend and report prediction
 fetch(apiUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+      'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
       'Access-Control-Allow-Credentials': 'true'
     },
     body: JSON.stringify(formData)

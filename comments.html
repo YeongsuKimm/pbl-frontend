@@ -1,4 +1,19 @@
+---
+comments: true
+title: Comments
+post-image: https://i.ibb.co/Gd2GpQk/Comments-cover-CPTPROJECT.png
+description: Here's where you can comments on the restaurants
+type: tangibles
+author: Ryan, Aaron, Jason
+courses: { csp: {week: 0} }
+categories: [C4.1]
+tags:
+- APCSP
+- CODE CODE CODE
+---
 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,26 +21,28 @@
 <title>Restaurant Comments</title>
 <style>
     body {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Roboto', sans-serif;
         margin: 0;
         padding: 0;
-        background-image: linear-gradient(to right, #ffd89b 0%, #19547b 100%);
+        background-image: radial-gradient(circle, #86B0DD, #FF6347, #40E0D0);
+        background-size: cover;
+        background-attachment: fixed;
         color: #333;
     }
 
     h1, h2 {
         text-align: center;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
         color: #fff;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 
     form {
         max-width: 400px;
         margin: 50px auto;
         padding: 20px;
-        background-color: rgba(255, 255, 255, 0.9);
+        background-color: rgba(255, 255, 255, 0.8);
         border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     }
 
     label {
@@ -48,14 +65,14 @@
     }
 
     button {
-        background-color: #ff7e5f;
+        background-color: #86B0DD;
         color: white;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
     button:hover {
-        background-color: #ff6f5e;
+        background-color: #6B8CAF;
     }
 
     table {
@@ -73,12 +90,12 @@
     }
 
     th {
-        background-color: #ff7e5f;
+        background-color: #86B0DD;
         color: white;
     }
 
     tr:hover {
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: rgba(134, 176, 221, 0.7);
     }
 </style>
 
@@ -86,13 +103,17 @@
 <body>
     <h1>Restaurants Catalogue</h1>
     
-    <h2>Submit personal reviews on restaurants here. Keep track of what restaurants you like!</h2>
+    <h2>Submit personal reviews on restaruants here. Keep track of what restaurants you like!</h2>
     <form id="commentForm">
+        <label for="uid">UID:</label>
+        <input type="text" id="uid" name="uid" required><br><br>
+
         <label for="restaurant">Restaurant:</label>
         <input type="text" id="restaurant" name="restaurant" required><br><br>
         
         <label for="rating">Rating (1-10):</label>
         <input type="number" id="rating" name="rating" min="1" max="10" required><br><br>
+
 
         <button type="submit">Submit Comment</button>
     </form>
@@ -112,6 +133,133 @@
     </table>
 
     <script>
+        function submitComment(event) {
+            event.preventDefault(); // Prevent form submission
+        
+            // Retrieve values from form inputs
+            const uid = document.getElementById('uid').value;
+            const restaurantName = document.getElementById('restaurant').value;
+            const rating = document.getElementById('rating').value;
+        
+            // Construct the comment object
+            const newComment = {
+                uid: uid,
+                restaurant: restaurantName,
+                rating: rating
+            };
+        
+            // Send a POST request to the backend API
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newComment) // Convert comment object to JSON string
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Refresh comments after successful submission
+                    displayComments();
+                    document.getElementById('commentForm').reset(); // Clear form inputs
+                } else {
+                    throw new Error('Failed to submit comment');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to submit comment. Please try again.');
+            });
+        }
+        
+        function getComments() {
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Failed to fetch comments');
+            })
+            .then(comments => {
+                console.log(comments)
+                const commentsTable = document.getElementById('commentBody');
+                commentsTable.innerHTML = '';
+        
+                comments.forEach(comment => {
+                    const row = document.createElement('tr');
+        
+                    const uidCell = document.createElement('td');
+                    uidCell.textContent = comment.uid;
+                    row.appendChild(uidCell);
+        
+                    const restaurantCell = document.createElement('td');
+                    restaurantCell.textContent = comment.restaurantName;
+                    row.appendChild(restaurantCell);
+        
+                    const ratingCell = document.createElement('td');
+                    ratingCell.textContent = comment.rating;
+                    row.appendChild(ratingCell);
+        
+                    commentsTable.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to fetch comments. Please try again.');
+            });
+        }
+                // Function to display comments
+        function displayComments() {
+            fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/comments/')
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Failed to fetch comments');
+            })
+            .then(comments => {
+                const commentsTable = document.getElementById('commentBody');
+                commentsTable.innerHTML = ''; // Clear existing table content
+
+                comments.forEach(comment => {
+                    const row = document.createElement('tr');
+
+                    const uidCell = document.createElement('td');
+                    uidCell.textContent = comment.UID; // Use "UID" key from the received JSON
+                    row.appendChild(uidCell);
+
+                    const restaurantCell = document.createElement('td');
+                    restaurantCell.textContent = comment.Restaurant; // Use "Restaurant" key from the received JSON
+                    row.appendChild(restaurantCell);
+
+                    const ratingCell = document.createElement('td');
+                    ratingCell.textContent = comment.Rating; // Use "Rating" key from the received JSON
+                    row.appendChild(ratingCell);
+
+                    commentsTable.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to fetch comments. Please try again.');
+            });
+        }
+
+        // Add event listener to the submit button
+        window.onload = function() {
+            displayComments(); // Display existing comments when the page loads
+            
+            const submitButton = document.querySelector('button[type="submit"]');
+            submitButton.addEventListener('click', submitComment);
+        };
+
+
+
+    </script>
+   
+</body>
+</html>
+
+<!--                 
 function displayComments() {
     const comments = JSON.parse(localStorage.getItem('comments')) || [];
     const commentsTable = document.getElementById('commentBody'); 
@@ -159,8 +307,4 @@ function submitComment(event) {
 window.onload = function() {
     displayComments();
     document.getElementById('commentForm').addEventListener('submit', submitComment);
-};
-    </script>
-   
-</body>
-</html>
+}; -->

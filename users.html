@@ -193,7 +193,7 @@
                 console.log(uid);
                 event.preventDefault(); 
                 try {
-                    const apiUrl = "http://127.0.0.1:8069/api/users/update"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update"
 
                     // post request to backend
                     const deleteAccount = await fetch(apiUrl, {
@@ -202,7 +202,7 @@
                         credentials: 'include',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
                             'Access-Control-Allow-Credentials': 'true'
                         },
                         body: JSON.stringify({ uid }) //JSON data
@@ -216,7 +216,7 @@
             changeEmail.addEventListener('click', async function (event) {
                 event.preventDefault();
                 try {
-                    const apiUrl = "http://127.0.0.1:8069/api/users/update"
+                    const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/users/update"
                     const email = document.getElementById('emailField').value; // the new email to change 
                     const uid = document.getElementById('uidEmailField').value; // the uid to make the change
 
@@ -227,7 +227,7 @@
                         credentials: 'include',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Access-Control-Allow-Origin': 'http://127.0.0.1:4100',
+                            'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io',
                             'Access-Control-Allow-Credentials': 'true'
                         },
                         body: JSON.stringify({ uid, email }) //JSON data
@@ -304,7 +304,7 @@
         }
 
         // URL to fetch JSON data from
-        const apiUrl = 'http://127.0.0.1:8069/api/users';
+        const apiUrl = 'https://pbl-backend.stu.nighthawkcodingsociety.com/api/users';
 
         // Call fetchData function with the API URL
         fetchData(apiUrl);
