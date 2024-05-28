@@ -1,8 +1,3 @@
----
-layout: default
-title: MyScout
-permalink: /myscout
----
 <html>
 <head>
     <meta charset="UTF-8">
@@ -206,7 +201,7 @@ permalink: /myscout
   // Written by group member
   function getFullList() {
     // Fetching edit endpoint
-    fetch('http://127.0.0.1:8086/api/users2/edit')
+    fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/edit')
       .then(response => response.json()) // Parse the JSON response
       .then(data => {
         data.forEach(item => {
@@ -237,7 +232,7 @@ permalink: /myscout
     // Clear the extant list
     document.getElementById('api_applist').innerHTML = '';
     // Fetching edit endpoint
-    fetch('http://127.0.0.1:8086/api/users2/edit', {
+    fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/edit', {
         method: 'POST', // Make a POST request to backend
         headers: {
             'Content-Type': 'application/json' // Set the content type header
@@ -290,7 +285,7 @@ permalink: /myscout
         selectedNames.push(textNode.textContent);
     });
     // Make a PUT request to the backend API endpoint
-    fetch('http://127.0.0.1:8086/api/users2/edit', {
+    fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/edit', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -326,7 +321,7 @@ permalink: /myscout
             }
         }
     });
-    fetch('http://127.0.0.1:8086/api/users2/edit', {
+    fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/edit', {
       method: 'DELETE',
       headers: {
           'Content-Type': 'application/json'
@@ -365,7 +360,7 @@ permalink: /myscout
     // Make sure there is data to send
     if (Object.keys(jsonData).length > 0) {
       // Send data via fetch
-      fetch('http://127.0.0.1:8086/api/users2/prediction', {
+      fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/prediction', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -423,7 +418,7 @@ permalink: /myscout
           SAT: sat,
           Extracurricular_Activities: extracurriculars
       };
-      fetch('http://127.0.0.1:8086/api/users2/prediction', {
+      fetch('https://pbl-backend.stu.nighthawkcodingsociety.com/api/users2/prediction', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
