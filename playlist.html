@@ -164,13 +164,21 @@
             console.log(genre)
             const videoGrid = document.querySelector('.videoGrid');
             const qlist = query.split(" ")
+            // If the genre selected within the VideoGrid is the liked videos
             if (genre == "likes") {
+                // Looping through each video 
                 videos.forEach(video => {
                     console.log(video)
+                    // Check if it's included with the specific user's likes, dislikes, and views
                     if(!video['accountViewsLikesDislikes']["likes"].includes(String(localStorage.getItem("uid")))){
-                        return
+                        return "error fetching playlist"
                     }
+                
                     else{
+                        /* 
+                        Essentially just formatting the video and adding it to the video grid list
+                        videoLink href
+                        */
                         const videoItem = document.createElement('div');
                         videoItem.classList.add('grid-item');
                         videoItem.classList.add('video-item');
