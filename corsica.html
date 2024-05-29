@@ -152,9 +152,12 @@
             }
         }
         function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+            for (let i = array.length - 1; i > 0; i--) { // This loop starts with i equal to the index of the last element (array.length - 1) and decrements i until it reaches 1
+                const j = Math.floor(Math.random() * (i + 1)); 
+                // Math.random() generates a random floating-point number between 0 and 1. And multiply by (i + 1) scales this to a range from 0 to (i + 1)
+                // Math.floor() rounds this down to the nearest integer, giving an integer between 0 and i (inclusive)
+                [array[i], array[j]] = [array[j], array[i]]; 
+                // uses array destructuring to swap the elements at indices i and j
             }
         }
         function renderVideos(videos, query = "", genre = "", shouldShuffle = false) {
