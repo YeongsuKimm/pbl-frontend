@@ -83,22 +83,20 @@
             const thumbnailUrl = document.getElementById('thumbnailUrl').value;
 
             const recipeData = {
-                userid: localStorage.getItem('uid'), // Assuming the userId is stored in localStorage
+                userid: localStorage.getItem('userId'), // Assuming the userId is stored in localStorage
                 recipeName: recipeName,
                 recipeInstructions: recipeInstructions,
                 recipeIngredients: recipeIngredients,
                 recommendedSupplies: recommendedSupplies,
-                recipeThumbnail: thumbnailUrl
+                thumbnail: thumbnailUrl // Ensure the key matches the API requirement
             };
 
             try {
-                const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/recipe/";
+                const apiUrl = "http://pbl-backend.stu.nighthawkcodingsociety.com/";
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://yeongsukimm.github.io/',
-                        'Access-Control-Allow-Credentials': 'true'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(recipeData)
                 });
@@ -111,7 +109,7 @@
                 document.getElementById('message').innerText = 'Recipe uploaded successfully.';
                 // Redirect to another page after 2 seconds
                 setTimeout(() => {
-                    window.location.href = './recipehomepage.html';
+                    window.location.href = './homepage';
                 }, 2000);
             } catch (error) {
                 console.error('Error:', error);
