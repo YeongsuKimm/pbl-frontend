@@ -72,12 +72,13 @@
         }
 
         .like-count {
-            margin-left: 10px;
-            color: #ccc;
+            margin-left: auto; /* Align like count to the right */
+            color: #FFD700; /* Golden color for the like count */
+            font-weight: bold;
         }
 
         #backToTop {
-            display: none;
+            display: none; /* Initially hide the back to top button */
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -116,6 +117,8 @@
                 const apiUrl = "https://pbl-backend.stu.nighthawkcodingsociety.com/api/recipe";
                 const response = await fetch(apiUrl);
                 const recipes = await response.json();
+                // Sort recipes based on likes
+                recipes.sort((a, b) => b.likes - a.likes);
                 // Clear existing results
                 const resultsList = document.getElementById('results');
                 resultsList.innerHTML = '';
